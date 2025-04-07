@@ -4,6 +4,13 @@ import { Database } from 'bun:sqlite'
 const db = new Database('mydb.sqlite', { create: true })
 
 // Create a table (if it doesn't exist)
+// Define the user type
+type User = {
+  id: number
+  name: string
+  email: string
+}
+
 db.run(`
   CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -24,12 +31,12 @@ function createUser(name: string, email: string): number {
 }
 
 // 2. Read (Select)
-function getUserById(id: number): any {
+function getUserById(id: number): User {
   const query = db.prepare('SELECT * FROM users WHERE id = $id')
   return query.get({ $id: id })
 }
 
-function getAllUsers(): any[] {
+function getAllUsers(): User[] {
   const query = db.prepare('SELECT * FROM users')
   return query.all()
 }
