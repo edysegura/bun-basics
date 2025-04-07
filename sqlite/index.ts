@@ -23,52 +23,69 @@ db.run(`
 
 // 1. Create (Insert)
 function createUser(name: string, email: string): number {
-  const query = db.prepare(
-    'INSERT INTO users (name, email) VALUES ($name, $email)',
+  db.run('INSERT INTO users (name, email) VALUES (?, ?)', [name, email])
+  const query = db.prepare<{ id: number }, {}>(
+    'SELECT last_insert_rowid() as id',
   )
-  const info = query.run({ $name: name, $email: email })
-  return info.lastInsertRowid
+  const result = query.get({})
+  if (!result || result.id === undefined) {
+    throw new Error('Failed to retrieve last insert row ID')
+  }
+  return result.id
 }
 
 // 2. Read (Select)
 function getUserById(id: number): User {
   const query = db.prepare('SELECT * FROM users WHERE id = $id')
-  return query.get({ $id: id })
+  return query.get({ $id: id }) as User
 }
 
 function getAllUsers(): User[] {
   const query = db.prepare('SELECT * FROM users')
-  return query.all()
+  return query.all() as User[]
 }
 
 // 3. Update
 function updateUser(id: number, name?: string, email?: string): number {
   let queryStr = 'UPDATE users SET '
   const updates: string[] = []
-  const params: any = { $id: id }
+  const params: any[] = []
 
   if (name !== undefined) {
-    updates.push('name = $name')
-    params.$name = name
+    updates.push('name = ?')
+    params.push(name)
   }
   if (email !== undefined) {
-    updates.push('email = $email')
-    params.$email = email
+    updates.push('email = ?')
+    params.push(email)
   }
 
   queryStr += updates.join(', ')
-  queryStr += ' WHERE id = $id'
+  queryStr += ' WHERE id = ?'
+  params.push(id)
 
-  const query = db.prepare(queryStr)
-  const info = query.run(params)
-  return info.changes
+  db.run(queryStr, params)
+  const query = db.prepare<{ changes: number }, {}>(
+    'SELECT changes() as changes',
+  )
+  const result = query.get({})
+  if (!result || result.changes === undefined) {
+    throw new Error('Failed to retrieve changes count')
+  }
+  return result.changes
 }
 
 // 4. Delete
 function deleteUser(id: number): number {
-  const query = db.prepare('DELETE FROM users WHERE id = $id')
-  const info = query.run({ $id: id })
-  return info.changes
+  db.run('DELETE FROM users WHERE id = ?', [id])
+  const query = db.prepare<{ changes: number }, {}>(
+    'SELECT changes() as changes',
+  )
+  const result = query.get({})
+  if (!result || result.changes === undefined) {
+    throw new Error('Failed to retrieve changes count')
+  }
+  return result.changes
 }
 
 // Example usage:
