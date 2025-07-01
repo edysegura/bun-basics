@@ -4,14 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hello World</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@2.0.6/css/pico.min.css"
+    />
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--pico-background-color);
+      }
+      main {
+        max-width: 420px;
+        margin: auto;
+        padding: 2rem;
+        box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
+        border-radius: 1rem;
+        background: var(--pico-card-background-color, #fff);
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello World</h1>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, eaque.
-      Molestiae laboriosam non laudantium debitis doloribus sapiente accusamus
-      mollitia dignissimos, necessitatibus voluptatibus repellendus, ab
-      repudiandae, ea perspiciatis qui ullam quaerat.
-    </p>
+    <main>
+      <h1>Hello World</h1>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci,
+        eaque.<br />
+        Molestiae laboriosam non laudantium debitis doloribus sapiente
+        accusamus<br />
+        mollitia dignissimos, necessitatibus voluptatibus repellendus, ab<br />
+        repudiandae, ea perspiciatis qui ullam quaerat.
+      </p>
+      <footer>
+        <small
+          >Styled with
+          <a href="https://picocss.com/" target="_blank">PicoCSS v2</a></small
+        >
+      </footer>
+    </main>
   </body>
 </html>
