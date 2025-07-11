@@ -6,7 +6,7 @@ const ADDRESS = 'localhost'
 serve({
   port: PORT,
   hostname: ADDRESS,
-  async fetch(req) {
+  async fetch(req: Request) {
     const url = new URL(req.url)
     if (url.pathname === '/') {
       const html = await Bun.file('./simple-server/index.html').text()
