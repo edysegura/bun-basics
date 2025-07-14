@@ -2,9 +2,8 @@
   "name": "bhvr-app",
   "version": "0.3.1",
   "description": "A monorepo template built with Bun, Hono, Vite, and React",
-  "author": "Steve Simkins",
+  "author": "Edy Segura",
   "license": "MIT",
-  "homepage": "https://github.com/stevedylandev/bhvr",
   "workspaces": [
     "./server",
     "./client",
