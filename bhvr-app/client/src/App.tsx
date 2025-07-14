@@ -33,9 +33,9 @@ function App() {
           <img src={beaver} className="logo" alt="beaver logo" />
         </a>
       </div>
-      <h1>bhvr</h1>
+      <h1>BHVR</h1>
       <h2>Bun + Hono + Vite + React</h2>
-      <p>A typesafe fullstack monorepo</p>
+      <p>A type safe fullstack monorepo</p>
       <div className="card">
         <div className='button-container'>
           <button onClick={sendRequest}>
