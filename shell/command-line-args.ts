@@ -1,4 +1,4 @@
-import { parseArgs } from 'util'
+import { parseArgs } from 'node:util'
 
 const { values } = parseArgs({
   args: Bun.argv,
@@ -16,4 +16,7 @@ const { values } = parseArgs({
 
 console.table(Bun.argv)
 console.table(process.argv)
-console.log(values)
+console.log(JSON.stringify(values))
+
+// how to run
+// bun run command-line-args.ts --flag1 --flag2="Edy Segura"
