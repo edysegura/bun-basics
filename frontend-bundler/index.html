@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bun as a Frontend Bundler</title>
+    <link rel="stylesheet" href="node_modules/@picocss/pico/css/pico.min.css" />
+    <script type="module" src="src/app.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Factorial Calculator</h1>
+      <form action="">
+        <div class="form">
+          <label for="number">
+            Number
+            <input
+              type="number"
+              min="0"
+              max="100"
+              id="number"
+              required
+              autofocus
+            />
+          </label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result">
+        <h2>Result</h2>
+        <mark id="result">0</mark>
+      </div>
+    </div>
+  </body>
+</html>

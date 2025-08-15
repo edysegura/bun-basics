@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "dev": "bun index.html",
+    "prebuild": "rm -fr dist",
+    "build": "bun build ./index.html --target=browser --minify --outdir ./dist",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@picocss/pico": "^2.1.1"
+  }
+}
