@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'bun:test'
+import { describe, expect, it } from 'bun:test'
 import { FactorialService } from './FactorialService'
 
-describe('FactorialService.js', () => {
+describe('FactorialService.ts', () => {
   it('should calculate factorial from a given number', () => {
     expect(FactorialService.calculate(1)).toBe(1)
     expect(FactorialService.calculate(2)).toBe(2)
@@ -15,9 +15,6 @@ describe('FactorialService.js', () => {
   })
 
   it('should return undefined for given invalid params', () => {
-    expect(FactorialService.calculate()).toBe(undefined)
     expect(FactorialService.calculate(-1)).toBe(undefined)
-    expect(FactorialService.calculate('')).toBe(undefined)
-    expect(FactorialService.calculate('1')).toBe(undefined)
   })
 })

@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, beforeAll } from 'bun:test'
+import { beforeAll, beforeEach, describe, expect, it } from 'bun:test'
 import { JSDOM } from 'jsdom'
 import { FactorialController } from './FactorialController'
 
@@ -14,8 +14,8 @@ beforeAll(() => {
   global.navigator = dom.window.navigator
 })
 
-describe('FactorialController.js', () => {
-  let controller
+describe('FactorialController.ts', () => {
+  let controller: FactorialController
 
   beforeEach(() => {
     // Set up document body before each test
@@ -40,12 +40,15 @@ describe('FactorialController.js', () => {
     controller.showResult(result)
 
     // THEN
-    expect(htmlElement.textContent).toBe('2')
+    expect(htmlElement?.textContent).toBe('2')
   })
 
   it('should get a value from input as a number', () => {
     // GIVEN
-    document.getElementById('number').value = '2'
+    const inputElement = document.getElementById('number') as HTMLInputElement
+    if (inputElement) {
+      inputElement.value = '2'
+    }
 
     // WHEN
     const number = controller.getNumber()
@@ -56,17 +59,22 @@ describe('FactorialController.js', () => {
 
   it('should calculate factorial from a given number', () => {
     // GIVEN
-    document.getElementById('number').value = '5'
+    const inputElement = document.getElementById('number') as HTMLInputElement
+    if (inputElement) {
+      inputElement.value = '5'
+    }
 
     // AND
-    const button = document.querySelector('button')
+    const button = document.querySelector('button') as HTMLButtonElement
     const htmlElement = document.getElementById('result')
 
     // WHEN
-    button.click()
+    if (button) {
+      button.click()
+    }
 
     // THEN
-    expect(htmlElement.textContent).toBe('120')
+    expect(htmlElement?.textContent).toBe('120')
   })
 
   it('should have zero as a default value showing result', () => {
@@ -77,6 +85,6 @@ describe('FactorialController.js', () => {
     controller.showResult()
 
     // THEN
-    expect(htmlElement.textContent).toBe('0')
+    expect(htmlElement?.textContent).toBe('0')
   })
 })

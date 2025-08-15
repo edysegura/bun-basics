@@ -1,12 +1,12 @@
 export class FactorialService {
-  static isValidNumber(number) {
+  static isValidNumber(number: number): boolean {
     // prettier-ignore
-    return number !== ''
-      && typeof number !== 'string'
+    return number !== undefined
+      && typeof number === 'number'
       && number > -1
   }
 
-  static calculate(number) {
+  static calculate(number: number): number | undefined {
     if (FactorialService.isValidNumber(number)) {
       let result = 1
       for (let i = 1; i <= number; i++) {
