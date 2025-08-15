@@ -15,6 +15,6 @@ describe('FactorialService.ts', () => {
   })
 
   it('should return undefined for given invalid params', () => {
-    expect(FactorialService.calculate(-1)).toBe(undefined)
+    expect(FactorialService.calculate(-1)).toBeUndefined()
   })
 })

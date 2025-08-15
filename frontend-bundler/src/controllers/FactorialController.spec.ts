@@ -1,5 +1,6 @@
 import { beforeAll, beforeEach, describe, expect, it } from 'bun:test'
 import { JSDOM } from 'jsdom'
+
 import { FactorialController } from './FactorialController'
 
 // Set up JSDOM before all tests
@@ -10,7 +11,7 @@ beforeAll(() => {
 
   // Make DOM APIs available globally
   global.document = dom.window.document
-  global.window = dom.window
+  global.window = dom.window as any
   global.navigator = dom.window.navigator
 })
 
