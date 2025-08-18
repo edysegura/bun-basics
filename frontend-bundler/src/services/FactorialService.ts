@@ -1,13 +1,8 @@
-export class FactorialService {
-  static isValidNumber(number: number): boolean {
-    // prettier-ignore
-    return number !== undefined
-      && typeof number === 'number'
-      && number > -1
-  }
+import { isNumber } from 'lodash'
 
+export class FactorialService {
   static calculate(number: number): number | undefined {
-    if (FactorialService.isValidNumber(number)) {
+    if (isNumber(number) && number > -1) {
       let result = 1
       for (let i = 1; i <= number; i++) {
         result = result * i
