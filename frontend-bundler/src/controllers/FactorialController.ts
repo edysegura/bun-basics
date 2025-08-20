@@ -1,4 +1,4 @@
-import { FactorialService } from '../services/FactorialService'
+import { Factorial } from '../models/Factorial'
 
 export class FactorialController {
   constructor() {
@@ -22,7 +22,7 @@ export class FactorialController {
 
   clickHandler(event: Event): void {
     event.preventDefault()
-    const result = FactorialService.calculate(this.getNumber())
+    const result = Factorial.calculate(this.getNumber())
     if (result !== undefined) {
       this.showResult(result)
     }
