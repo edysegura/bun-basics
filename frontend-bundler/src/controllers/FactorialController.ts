@@ -21,7 +21,6 @@ export class FactorialController {
   }
 
   private clickHandler(event: Event): void {
-    event.preventDefault()
     const result = Factorial.calculate(this.getNumber())
     if (result !== undefined) {
       this.showResult(result)
@@ -31,9 +30,10 @@ export class FactorialController {
   private listenButtonClick(): void {
     const form = document.querySelector('form') as HTMLFormElement
     if (form) {
-      form.addEventListener('submit', (event: Event) =>
-        this.clickHandler(event),
-      )
+      form.addEventListener('submit', (event: Event) => {
+        event.preventDefault()
+        this.clickHandler(event)
+      })
     }
   }
 }
