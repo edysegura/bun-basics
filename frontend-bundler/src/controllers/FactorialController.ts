@@ -5,14 +5,14 @@ export class FactorialController {
     this.listenButtonClick()
   }
 
-  showResult(result: number = 0): void {
+  private showResult(result: number = 0): void {
     const span = document.getElementById('result') as HTMLSpanElement
     if (span) {
       span.textContent = result.toString()
     }
   }
 
-  getNumber(): number {
+  private getNumber(): number {
     const inputNumber = document.getElementById('number') as HTMLInputElement
     if (inputNumber) {
       return +inputNumber.value
@@ -20,7 +20,7 @@ export class FactorialController {
     return 0
   }
 
-  clickHandler(event: Event): void {
+  private clickHandler(event: Event): void {
     event.preventDefault()
     const result = Factorial.calculate(this.getNumber())
     if (result !== undefined) {
@@ -28,7 +28,7 @@ export class FactorialController {
     }
   }
 
-  listenButtonClick(): void {
+  private listenButtonClick(): void {
     const form = document.querySelector('form') as HTMLFormElement
     if (form) {
       form.addEventListener('submit', (event: Event) =>
