@@ -1,4 +1,4 @@
-self.onmessage = (event: MessageEvent) => {
+self.addEventListener('message', (event: MessageEvent<string>) => {
   console.log(`[worker.ts] ${event.data}`)
-  postMessage('world')
-}
+  self.postMessage('world')
+})
