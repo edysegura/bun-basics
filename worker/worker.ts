@@ -1,4 +1,4 @@
 self.onmessage = (event: MessageEvent) => {
-  console.log(event.data)
+  console.log(`[worker.ts] ${event.data}`)
   postMessage('world')
 }
