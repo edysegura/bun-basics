@@ -16,4 +16,6 @@ if (isMainThread) {
   parentPort?.postMessage(source.toUpperCase())
 }
 
-// run with `bun threads.ts`
+// bun threads.ts
+// deno --allow-read threads.ts
+// node --experimental-transform-types --no-warnings threads.ts
