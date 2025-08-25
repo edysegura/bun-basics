@@ -4,9 +4,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bun multi-pages app - MPA</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
   </head>
   <body>
-    <h1>Bun multi-pages app - Main page</h1>
-    <a href="./about">About</a>
+    <nav class="container-fluid">
+      <ul>
+        <li><strong>Bun Multi-Pages App</strong></li>
+      </ul>
+      <ul>
+        <li><a href="./" role="button" class="contrast">Home</a></li>
+        <li><a href="./about" role="button">About</a></li>
+      </ul>
+    </nav>
+
+    <main class="container">
+      <article>
+        <header>
+          <h1>Welcome to Bun Multi-Pages App</h1>
+          <p>A simple multi-page application built with Bun</p>
+        </header>
+
+        <section>
+          <h2>Features</h2>
+          <div class="grid">
+            <div>
+              <h3>🚀 Fast</h3>
+              <p>Built with Bun for lightning-fast performance</p>
+            </div>
+            <div>
+              <h3>📱 Responsive</h3>
+              <p>Mobile-first design with PicoCSS</p>
+            </div>
+            <div>
+              <h3>⚡ Simple</h3>
+              <p>Clean, semantic HTML structure</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Get Started</h2>
+          <p>
+            This is a multi-page application example. Navigate between pages to
+            see how it works.
+          </p>
+          <a href="./about" role="button">Learn More</a>
+        </section>
+      </article>
+    </main>
+
+    <footer class="container">
+      <small>Built with ❤️ using Bun and PicoCSS</small>
+    </footer>
   </body>
 </html>

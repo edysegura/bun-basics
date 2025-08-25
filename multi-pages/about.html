@@ -3,10 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bun multi-pages app - MPA</title>
+    <title>About - Bun multi-pages app</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
   </head>
   <body>
-    <h1>Bun multi-pages app - About page</h1>
-    <a href="./">Main page</a>
+    <nav class="container-fluid">
+      <ul>
+        <li><strong>Bun Multi-Pages App</strong></li>
+      </ul>
+      <ul>
+        <li><a href="./" role="button">Home</a></li>
+        <li><a href="./about" role="button" class="contrast">About</a></li>
+      </ul>
+    </nav>
+
+    <main class="container">
+      <article>
+        <header>
+          <h1>About This Project</h1>
+          <p>Learn more about our multi-page application</p>
+        </header>
+
+        <section>
+          <h2>What is Bun?</h2>
+          <p>
+            Bun is a fast all-in-one JavaScript runtime and toolkit. It's
+            designed to be a drop-in replacement for Node.js with better
+            performance and developer experience.
+          </p>
+
+          <h3>Key Benefits:</h3>
+          <ul>
+            <li><strong>Speed:</strong> Up to 3x faster than Node.js</li>
+            <li>
+              <strong>Bundler:</strong> Built-in bundler for frontend and
+              backend
+            </li>
+            <li>
+              <strong>Package Manager:</strong> Fast package installation with
+              bun install
+            </li>
+            <li><strong>Testing:</strong> Built-in test runner</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Why Multi-Page Architecture?</h2>
+          <p>Multi-page applications (MPAs) are great for:</p>
+          <div class="grid">
+            <div>
+              <h4>🔍 SEO</h4>
+              <p>Better search engine optimization</p>
+            </div>
+            <div>
+              <h4>📱 Performance</h4>
+              <p>Faster initial page loads</p>
+            </div>
+            <div>
+              <h4>🛠️ Simplicity</h4>
+              <p>Easier to maintain and debug</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Technology Stack</h2>
+          <p>This project demonstrates:</p>
+          <ul>
+            <li>Bun runtime and package manager</li>
+            <li>PicoCSS for minimal, semantic styling</li>
+            <li>Semantic HTML5 structure</li>
+            <li>Responsive design principles</li>
+          </ul>
+
+          <a href="./" role="button">Back to Home</a>
+        </section>
+      </article>
+    </main>
+
+    <footer class="container">
+      <small>Built with ❤️ using Bun and PicoCSS</small>
+    </footer>
   </body>
 </html>
