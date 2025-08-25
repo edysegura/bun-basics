@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "dev": "bun run --watch ./**/*.html",
+    "prebuild": "rm -fr dist",
+    "build": "bun build ./**/*.html --target=browser --minify --outdir ./dist"
+  }
+}
