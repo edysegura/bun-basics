@@ -1,10 +1,16 @@
-const server = Bun.serve({
+import { serve } from 'bun'
+import homePage from './index.html'
+
+const server = serve({
+  routes: {
+    '/': homePage,
+    '/blog': new Response('Blog!'),
+  },
   fetch(req) {
     const url = new URL(req.url)
-    if (url.pathname === '/') return new Response('Home page!')
-    if (url.pathname === '/blog') return new Response('Blog!')
-    return new Response('404!')
+    console.log(`[${req.method}] ${url.pathname}`)
+    return new Response('Not found!', { status: 404 })
   },
 })
 
-console.log(`Server running at http://localhost:${server.port}`)
+console.log(`Server running at http://${server.hostname}:${server.port}`)
