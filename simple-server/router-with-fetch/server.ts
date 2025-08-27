@@ -1,15 +1,10 @@
 import { serve } from 'bun'
 
-const PORT = 3000
-const ADDRESS = 'localhost'
-
-serve({
-  port: PORT,
-  hostname: ADDRESS,
+const server = serve({
   async fetch(req: Request) {
     const url = new URL(req.url)
     if (url.pathname === '/') {
-      const html = await Bun.file('./simple-server/index.html').text()
+      const html = await Bun.file('../index.html').text()
       return new Response(html, {
         headers: { 'Content-Type': 'text/html' },
       })
@@ -18,4 +13,6 @@ serve({
   },
 })
 
-console.log(`Server is up and running at http://${ADDRESS}:${PORT}`)
+console.log(
+  `Server is up and running at http://${server.hostname}:${server.port}`,
+)
