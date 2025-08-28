@@ -1,5 +1,6 @@
 import { serve } from 'bun'
-import homePage from './index.html'
+import homePage from '../index.html'
+import userFactory from './user'
 
 const server = serve({
   routes: {
@@ -7,21 +8,14 @@ const server = serve({
     '/blog': new Response('Blog!'),
     '/api/users/:id': async (req) => {
       const { id } = req.params
-      const user = {
-        id,
-        name: 'John Doe',
-        email: 'john.doe@example.com',
-        age: 30,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      }
+      const user = userFactory(id)
       return Response.json(user)
     },
   },
-  fetch(req) {
+  fetch(req: Request) {
     const url = new URL(req.url)
     console.log(`[${req.method}] ${url.pathname}`)
-    return new Response('Not found!', { status: 404 })
+    return new Response('<h1>Not found!</h1>', { status: 404 })
   },
   development: true,
 })
