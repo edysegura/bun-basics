@@ -1,4 +1,4 @@
-export default function userFactory(id: string) {
+function userFactory(id: string) {
   return {
     id,
     name: 'John Doe',
@@ -7,4 +7,11 @@ export default function userFactory(id: string) {
     createdAt: new Date(),
     updatedAt: new Date(),
   }
+}
+
+type CustomRequest = Request & { params: { id: string } }
+export default async function userService(req: CustomRequest) {
+  const { id } = req.params
+  const user = userFactory(id)
+  return Response.json(user)
 }

@@ -1,16 +1,12 @@
 import { serve } from 'bun'
 import homePage from '../index.html'
-import userFactory from './user'
+import userService from './user'
 
 const server = serve({
   routes: {
     '/': homePage,
     '/blog': new Response('Blog!'),
-    '/api/users/:id': async (req) => {
-      const { id } = req.params
-      const user = userFactory(id)
-      return Response.json(user)
-    },
+    '/api/users/:id': userService,
   },
   fetch(req: Request) {
     const url = new URL(req.url)
