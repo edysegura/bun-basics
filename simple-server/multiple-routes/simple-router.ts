@@ -14,8 +14,11 @@ const server = serve({
   },
   fetch(req: Request) {
     const url = new URL(req.url)
-    console.log(`[${req.method}] ${url.pathname}`)
-    return new Response('<h1>Not found!</h1>', { status: 404 })
+    console.log(`[${req.method}] ${url.pathname}`, '--> 404 Not found!')
+    return new Response('<h1>Not found!</h1>', {
+      status: 404,
+      headers: { 'Content-Type': 'text/html' },
+    })
   },
   development: true,
 })
