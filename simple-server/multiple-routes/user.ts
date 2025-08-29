@@ -1,4 +1,4 @@
-function userFactory(id: string) {
+export function userFactory(id: string) {
   return {
     id,
     name: 'John Doe',
@@ -9,8 +9,9 @@ function userFactory(id: string) {
   }
 }
 
-type CustomRequest = Request & { params: { id: string } }
-export default async function userService(req: CustomRequest) {
+export type UserRequest = Request & { params: { id: string } }
+
+export default async function userService(req: UserRequest) {
   const { id } = req.params
   const user = userFactory(id)
   return Response.json(user)
