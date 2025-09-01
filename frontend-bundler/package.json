@@ -3,6 +3,7 @@
     "dev": "bun index.html",
     "prebuild": "rm -fr dist",
     "build": "bun build ./index.html --target=browser --minify --outdir ./dist",
+    "postbuild": "bun scripts/purge-css.mjs",
     "test": "bun test",
     "type-check": "tsc --noEmit"
   },
@@ -14,6 +15,7 @@
     "@types/jsdom": "^21.1.6",
     "@types/lodash": "^4.17.20",
     "jsdom": "^26.1.0",
+    "purgecss": "^7.0.2",
     "typescript": "^5.3.0"
   }
 }
