@@ -18,6 +18,6 @@ db.run(`
 `)
 
 const query = db.query('SELECT * FROM users;')
-const result = query.get()
+const result = query.all()
 
 console.log(result)
