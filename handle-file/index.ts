@@ -1,6 +1,6 @@
-import { file } from 'bun'
+import { file as fileReader } from 'bun'
 
-const packageJson = file('../package.json')
+const packageJson = fileReader('../package.json')
 
 console.log('name:', packageJson.name)
 console.log(await packageJson.text())
