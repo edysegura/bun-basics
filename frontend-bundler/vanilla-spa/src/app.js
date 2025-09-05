@@ -18,33 +18,29 @@ window.addEventListener('popstate', handleHistoryNavigation)
 function handleNavigationClick(event) {
   event.preventDefault()
   const link = event.target
-  const newContent = link.dataset.content
-  history.pushState(newContent, '', link.href)
-  updatePageContent(newContent)
+  const url = new URL(link.href)
+  const content = getContentForRoute(`${url.pathname}`)
+  history.pushState(content, '', link.href)
+  updatePageContent(content)
 }
 
-function updatePageContent(newContent) {
-  contentElement.innerHTML = newContent || 'No content available'
+function updatePageContent(content) {
+  contentElement.innerHTML = content || 'No content available'
 }
 
 function handleHistoryNavigation(event) {
-  const newContent = event.state
-  updatePageContent(newContent)
+  const content = event.state
+  updatePageContent(content)
 }
 
 function getContentForRoute(route) {
+  console.log('[app.js] route to', route)
   return routeContentMap[route] || 'No content available'
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  console.log('DOMContentLoaded')
   const currentPath = document.location.pathname
-  console.log('Current path:', currentPath)
-
-  // Load content based on current route
   const content = getContentForRoute(currentPath)
   updatePageContent(content)
-
-  // Set the initial state for the history API
   history.replaceState(content, '', currentPath)
 })
