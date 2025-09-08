@@ -21,8 +21,8 @@ function handleNavigationClick(event: MouseEvent) {
   if (!link || !link.href) return
   const url = new URL(link.href)
   const content = getContentForRoute(`${url.pathname}`)
-  history.pushState(content, '', link.href)
   updatePageContent(content)
+  history.pushState(content, '', link.href)
 }
 
 function updatePageContent(content: string) {
