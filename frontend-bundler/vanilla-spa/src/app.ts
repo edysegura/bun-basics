@@ -3,10 +3,10 @@ const navigationLinks = document.querySelectorAll<HTMLAnchorElement>('a')
 
 // Route to content mapping
 const routeContentMap: Record<string, string> = {
-  '/page-1.html': 'Content for page 1',
-  '/page-2.html': 'Content for page 2',
-  '/about.html': 'This is the about page',
-  '/': 'This is the default content.',
+  '/page-1.html': '<h3>Content for page 1</h3>',
+  '/page-2.html': '<h3>Content for page 2</h3>',
+  '/about.html': '<h3>This is the about page</h3>',
+  '/': '<h3>This is the default content.</h3>',
 }
 
 navigationLinks.forEach((link) => {
@@ -25,13 +25,13 @@ function handleNavigationClick(event: MouseEvent) {
   updatePageContent(content)
 }
 
-function updatePageContent(content: string | null | undefined) {
+function updatePageContent(content: string) {
   if (!contentElement) return
   contentElement.innerHTML = content || 'No content available'
 }
 
 function handleHistoryNavigation(event: PopStateEvent) {
-  const content = event.state as string | null
+  const content = event.state as string | ''
   updatePageContent(content)
 }
 
