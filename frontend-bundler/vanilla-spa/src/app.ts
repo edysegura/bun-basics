@@ -1,8 +1,8 @@
-const contentElement = document.getElementById('content')
-const navigationLinks = document.querySelectorAll('a')
+const contentElement = document.getElementById('content') as HTMLElement
+const navigationLinks = document.querySelectorAll<HTMLAnchorElement>('a')
 
 // Route to content mapping
-const routeContentMap = {
+const routeContentMap: Record<string, string> = {
   '/page-1.html': 'Content for page 1',
   '/page-2.html': 'Content for page 2',
   '/about.html': 'This is the about page',
@@ -15,26 +15,28 @@ navigationLinks.forEach((link) => {
 
 window.addEventListener('popstate', handleHistoryNavigation)
 
-function handleNavigationClick(event) {
+function handleNavigationClick(event: MouseEvent) {
   event.preventDefault()
-  const link = event.target
+  const link = event.currentTarget as HTMLAnchorElement
+  if (!link || !link.href) return
   const url = new URL(link.href)
   const content = getContentForRoute(`${url.pathname}`)
   history.pushState(content, '', link.href)
   updatePageContent(content)
 }
 
-function updatePageContent(content) {
+function updatePageContent(content: string | null | undefined) {
+  if (!contentElement) return
   contentElement.innerHTML = content || 'No content available'
 }
 
-function handleHistoryNavigation(event) {
-  const content = event.state
+function handleHistoryNavigation(event: PopStateEvent) {
+  const content = event.state as string | null
   updatePageContent(content)
 }
 
-function getContentForRoute(route) {
-  console.log('[app.js] route to', route)
+function getContentForRoute(route: string): string {
+  console.log('[app.ts] route to', route)
   return routeContentMap[route] || 'No content available'
 }
 
