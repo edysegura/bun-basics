@@ -32,6 +32,7 @@ function updatePageContent(content: string) {
 
 function handleHistoryNavigation(event: PopStateEvent) {
   const content = event.state as string | ''
+  console.log('[app.ts] pop state', content)
   updatePageContent(content)
 }
 
