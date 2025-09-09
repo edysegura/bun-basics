@@ -1,9 +1,14 @@
+import type { HTMLBundle } from 'bun'
+import page1 from './pages/page-1.html' with { type: "text" }
+
+type htmlPage = string | HTMLBundle
+
 const contentElement = document.getElementById('content') as HTMLElement
 const navigationLinks = document.querySelectorAll<HTMLAnchorElement>('a')
 
 // Route to content mapping
-const routeContentMap: Record<string, string> = {
-  '/page-1.html': '<h2>Content for page 1</h2>',
+const routeContentMap: Record<string, htmlPage> = {
+  '/page-1.html': page1,
   '/page-2.html': '<h2>Content for page 2</h2>',
   '/about.html': '<h2>This is the about page</h2>',
   '/': '<h2>This is the default content.</h2>',
@@ -25,9 +30,9 @@ function handleNavigationClick(event: MouseEvent) {
   window.history.pushState(content, '', link.href)
 }
 
-function updatePageContent(content: string) {
+function updatePageContent(content: htmlPage) {
   if (!contentElement) return
-  contentElement.innerHTML = content || 'No content available'
+  contentElement.innerHTML = content as string || 'No content available'
 }
 
 function handleHistoryNavigation(event: PopStateEvent) {
@@ -36,7 +41,7 @@ function handleHistoryNavigation(event: PopStateEvent) {
   updatePageContent(content)
 }
 
-function getContentForRoute(route: string): string {
+function getContentForRoute(route: string): htmlPage {
   console.log('[app.ts] route to', route)
   return routeContentMap[route] || 'No content available'
 }
