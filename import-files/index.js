@@ -1,5 +1,5 @@
 import htmlFile from './files/index.html' with { type: "text" }
-import jsonFile from '../package.json'
+import jsonFile from '../package.json' with { type: "json" }
 
 console.log('---> HTML File')
 console.log(htmlFile)
