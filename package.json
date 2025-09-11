@@ -1,4 +1,6 @@
 {
+  "name": "bun-basics",
+  "private": "true",
   "devDependencies": {
     "@types/bun": "latest"
   }
