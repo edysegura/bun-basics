@@ -3,6 +3,6 @@
     "dev": "bun ./src/index.html --console",
     "start": "bun ./dist/index.html",
     "prebuild": "rm -fr ./dist",
-    "build": "bun build ./src/index.html --target=browser --minify --outdir ./dist"
+    "build": "bun build ./src/index.html --production --target=browser --minify --outdir ./dist"
   }
 }
