@@ -7,8 +7,8 @@ test('fake timers', () => {
   setTimeout(callback, 1000)
   expect(callback).not.toBeCalled()
 
-  // jest.advanceTimersByTime(1000)
-  jest.runAllTimers()
+  jest.advanceTimersByTime(1000) //available on bun v1.3.5
+  // jest.runAllTimers()
   expect(callback).toHaveBeenCalled()
 
   jest.useRealTimers()
